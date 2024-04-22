@@ -99,7 +99,7 @@ class DatePicker {
      */
     openCalendarEvent() {
         this.query('#datePickerInput').addEventListener('click', () => {
-            this.query('#datePickerPopup').classList.add("date-picker-input--active");
+            this.query('#datePickerPopup').classList.add("date-picker__popup--active");
         });
     }
 
@@ -109,7 +109,7 @@ class DatePicker {
     closeCalendarEvent() {
         this.document.addEventListener('click', (event) => {
             if (!this.query('#datePicker').contains(event.target)) {
-                this.query('#datePickerPopup').classList.remove("date-picker-input--active");
+                this.query('#datePickerPopup').classList.remove("date-picker__popup--active");
             }
         });
     }
@@ -212,11 +212,11 @@ class DatePicker {
         const currentDate = moment(startDate).startOf('week');
         let calendarHtml = '';
         while (currentDate.isBefore(endDate)) {
-            calendarHtml += '<div class="show-calendar-week">';
+            calendarHtml += '<div class="date-picker__calendar-week">';
 
             for (let i = 0; i < 7; i++) {
                 if (currentDate.isSame(startDate, 'month')) {
-                    calendarHtml += `<button class="calendarDay calendar-day${this.compareDate(currentDate, this.nowDate) ? " calendar-day--today" : ""}${!!selectedDay && this.compareDate(currentDate, selectedDay) ? " calendar-day--selected" : ""}">${currentDate.date()}</button>`;
+                    calendarHtml += `<button class="calendarDay date-picker__calendar-day${this.compareDate(currentDate, this.nowDate) ? " date-picker__calendar-day--today" : ""}${!!selectedDay && this.compareDate(currentDate, selectedDay) ? " date-picker__calendar-day--selected" : ""}">${currentDate.date()}</button>`;
                 } else {
                     calendarHtml += '<div></div>';
                 }
