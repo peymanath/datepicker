@@ -1,0 +1,356 @@
+/******************** Add fonts ********************/
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/IRANSansX-DemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IRANSansX;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/IRANSansX-Regular.woff2') format('woff2');
+}
+
+/******************** Add fonts ********************/
+
+/******************** Css Reset ********************/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+/******************** Css Reset ********************/
+
+
+/******************** Global ********************/
+:root {
+    --color-primary: #01497a;
+    --color-primary-foreground: #fff;
+}
+
+* {
+    font-family: IRANSansX !important;
+}
+
+body {
+    padding: 10px
+}
+
+.centerd-content {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/******************** Global ********************/
+.datepicker-container {
+    position: relative;
+}
+
+.datepicker-input {
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px 10px;
+}
+
+.datepicker-arrow {
+    visibility: visible;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    height: 11px;
+    width: 20px;
+    transform: translate(104.2px, 1909.6px);
+    z-index: 101;
+}
+
+.datepicker-popup {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.show-calender {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+}
+
+.show-calender_day-name {
+    justify-self: center;
+}
+
+.datepicker-calendar {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    padding: 20px 10px;
+    gap: 5px;
+}
+
+.show-calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    gap: 5px;
+}
+
+.calendar-day {
+    background-color: transparent;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-day:hover {
+    border-color: var(--color-primary);
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-day--today {
+    border-color: #ccc;
+}
+
+.calendar-day--selected {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+/* Header */
+.datepicker-action-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "years months" "days days";
+    gap: 8px;
+    color: var(--color-primary-foreground);
+    background-color: var(--color-primary);
+    padding: 10px 10px 2px;
+}
+
+.datepicker-action-header_years,
+.datepicker-action-header_months {
+    grid-row: 1fr;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.datepicker-action-header_years {
+    grid-area: years;
+}
+
+.datepicker-action-header_months {
+    grid-area: months;
+}
+
+.datepicker-action-header_days {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: days;
+}
+
+.datepicker-action-header_days .day {
+    font-size: 12px;
+}
+
+.datepicker-action-header_months .currentMonth {
+    width: 80px;
+}
+
+.datepicker-action-header_years :is(.nextYear, .prevYear),
+.datepicker-action-header_months :is(.nextMonth, .prevMonth) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid var(--color-primary-foreground);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    color: inherit;
+    transition: all 0.3s ease-in-out;
+}
+
+.datepicker-action-header_years :is(.nextYear, .prevYear):hover,
+.datepicker-action-header_months :is(.nextMonth, .prevMonth):hover {
+    background-color: var(--color-primary-foreground);
+    color: var(--color-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Footer */
+.footer-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px 10px;
+}
+
+.footer-action :is(.actionNow, .actionClear) {
+    appearance: none;
+    color: var(--color-primary-foreground);
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    padding: 2px 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-action :is(.actionNow, .actionClear):hover {
+    appearance: none;
+    color: var(--color-primary);
+    background-color: var(--color-primary-foreground);
+    border-radius: 5px;
+    padding: 2px 8px;
+    transition: all 0.3s ease-in-out;
+}
