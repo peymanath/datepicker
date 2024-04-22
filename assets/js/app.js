@@ -6,7 +6,8 @@ class DatePicker {
     document = document;
 
     /**
-     * Making a presentation of the months of the year to convert the month number to the name of the month in the solar date language
+     * Making a presentation of the months of the year to convert the month number to 
+     * the name of the month in the solar date language.
      */
     jalaliMonth = [
         "فروردین",
@@ -39,8 +40,7 @@ class DatePicker {
             this.updateCurrentMonthYear();
             this.setNowDay();
             this.clearDay();
-            this.changeMonth();
-            this.changeYear();
+            this.changeYearMonthEvent();
             this.renderCalendar({
                 date: this.selectedDate,
                 selectedDay: moment(this.getInputValue(), this.fullNumberFormatJalali)
@@ -67,7 +67,9 @@ class DatePicker {
      * @param {string} selector 
      */
     query(selector) {
-        return this.document.querySelectorAll(selector).length > 1 ? this.document.querySelectorAll(selector) : this.document.querySelector(selector);
+        return this.document.querySelectorAll(selector).length > 1
+            ? this.document.querySelectorAll(selector)
+            : this.document.querySelector(selector);
     }
 
     /**
@@ -97,8 +99,7 @@ class DatePicker {
      */
     openCalendarEvent() {
         this.query('#datePickerInput').addEventListener('click', () => {
-            const popupElement = this.query('#datePickerPopup');
-            popupElement.style = `display:flex;`;
+            this.query('#datePickerPopup').classList.add("date-picker-input--active");
         });
     }
 
@@ -108,7 +109,7 @@ class DatePicker {
     closeCalendarEvent() {
         this.document.addEventListener('click', (event) => {
             if (!this.query('#datePicker').contains(event.target)) {
-                this.query('#datePickerPopup').style.display = 'none';
+                this.query('#datePickerPopup').classList.remove("date-picker-input--active");
             }
         });
     }
@@ -151,44 +152,31 @@ class DatePicker {
     }
 
     /**
-     * Change calendar months
+     * Change calendar Year and month logic
+     * @param {string} format 
+     * @param {"increment"|"decrement"} type 
      */
-    changeMonth() {
-        const change = (type = "increment") => {
-            const selectedDate = moment(this.getInputValue(), this.fullNumberFormatJalali);
-            this.renderCalendar({
-                date: this.selectedDate.add(type === "increment" ? 1 : -1, "jM"),
-                selectedDay: selectedDate
-            });
-            this.updateCurrentMonthYear(this.selectedDate)
-        }
-        this.query('#nextMonth').addEventListener('click', () => {
-            change("increment")
+    changeYearMonth(format, type = "increment") {
+        const selectedDate = moment(this.getInputValue(), this.fullNumberFormatJalali);
+        this.renderCalendar({
+            date: this.selectedDate.add(type === "increment" ? 1 : -1, format),
+            selectedDay: selectedDate
         });
-        this.query('#prevMonth').addEventListener('click', () => {
-            change("decrement")
-        });
+        this.updateCurrentMonthYear(this.selectedDate)
     }
 
-
     /**
-     * Change calendar Year
+     * Change calendar Year and month Event
      */
-    changeYear() {
-        const change = (type = "increment") => {
-            const selectedDate = moment(this.getInputValue(), this.fullNumberFormatJalali);
-            this.renderCalendar({
-                date: this.selectedDate.add(type === "increment" ? 1 : -1, "jY"),
-                selectedDay: selectedDate
-            });
-            this.updateCurrentMonthYear(this.selectedDate)
-        }
-        this.query('#nextYear').addEventListener('click', () => {
-            change("increment")
-        });
-        this.query('#prevYear').addEventListener('click', () => {
-            change("decrement")
-        });
+    changeYearMonthEvent() {
+
+        // Years
+        this.query('#nextYear').addEventListener('click', () => this.changeYearMonth("jY", "increment"));
+        this.query('#prevYear').addEventListener('click', () => this.changeYearMonth("jY", "decrement"));
+
+        // Month
+        this.query('#nextMonth').addEventListener('click', () => this.changeYearMonth("jM", "increment"));
+        this.query('#prevMonth').addEventListener('click', () => this.changeYearMonth("jM", "decrement"));
     }
 
     /**

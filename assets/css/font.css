@@ -1,0 +1,14 @@
+/* Add fonts */
+@font-face {
+  font-family: IRANSansX;
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/IRANSansXFaNum-DemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: IRANSansX;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/IRANSansXFaNum-Regular.woff2") format("woff2");
+}

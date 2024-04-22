@@ -8,7 +8,43 @@
   </head>
 
   <body>
-    <div class="centered-content">
+    <!-- Icons -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      style="display: none; visibility: hidden"
+    >
+      <symbol
+        id="icon-arrow-down"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m19.5 8.25-7.5 7.5-7.5-7.5"
+        />
+      </symbol>
+
+      <symbol
+        id="icon-arrow-up"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m4.5 15.75 7.5-7.5 7.5 7.5"
+        />
+      </symbol>
+    </svg>
+    <!-- Icons -->
+
+    <section class="centered-content">
       <!-- Date Picker -->
       <div class="date-picker" id="datePicker">
         <input
@@ -23,75 +59,27 @@
             <header class="date-picker__heaer">
               <div class="date-picker__actions date-picker__actions--year">
                 <button id="prevYear" class="btn-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    width="10"
-                    height="10"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    />
+                  <svg width="10" height="10">
+                    <use xlink:href="#icon-arrow-down"></use>
                   </svg>
                 </button>
                 <span id="currentYear" class="date-picker__year-name"></span>
                 <button id="nextYear" class="btn-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    width="10"
-                    height="10"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                    />
+                  <svg width="10" height="10">
+                    <use xlink:href="#icon-arrow-up"></use>
                   </svg>
                 </button>
               </div>
               <div class="date-picker__actions date-picker__actions--month">
                 <button id="prevMonth" class="btn-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    width="10"
-                    height="10"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    />
+                  <svg width="10" height="10">
+                    <use xlink:href="#icon-arrow-down"></use>
                   </svg>
                 </button>
                 <span id="currentMonth" class="date-picker__month-name"></span>
                 <button id="nextMonth" class="btn-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    width="10"
-                    height="10"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                    />
+                  <svg width="10" height="10">
+                    <use xlink:href="#icon-arrow-up"></use>
                   </svg>
                 </button>
               </div>
@@ -116,10 +104,11 @@
         </div>
       </div>
       <!-- Date Picker -->
-    </div>
+    </section>
 
     <!-- Load Script -->
-    <script src="https://unpkg.com/jalali-moment@3.3.11/dist/jalali-moment.browser.js"></script>
+    <!-- https://unpkg.com/jalali-moment@3.3.11/dist/jalali-moment.browser.js -->
+    <script src="./assets/js/jalali-moment.browser.js"></script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
