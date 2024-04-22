@@ -1,74 +1,125 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>دیت پیکر</title>
-    <link rel="stylesheet" media="all" href="./assets/css/style.css">
-</head>
+    <link rel="stylesheet" media="all" href="./assets/css/style.css" />
+  </head>
 
-<body>
-    <div class="centerd-content">
-        <div class="datepicker-container">
-            <input type="text" id="datepicker-input" class="datepicker-input" readonly
-                placeholder="تاریخ را انتخاب کنید">
-            <div class="datepicker-popup" id="datepicker-popup">
-                <header class="datepicker-action-header">
-                    <div class="datepicker-action-header_years">
-                        <button class="prevYear">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" width="10" height="10">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                            </svg>
-                        </button>
-                        <span class="currentYear"></span>
-                        <button class="nextYear">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" width="10" height="10">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="datepicker-action-header_months">
-                        <button class="prevMonth">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" width="10" height="10">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                            </svg>
-                        </button>
-                        <span class="currentMonth"></span>
-                        <button class="nextMonth">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" width="10" height="10">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="datepicker-action-header_days">
-                        <div class="day">شنبه</div>
-                        <div class="day">1 شنبه</div>
-                        <div class="day">2 شنبه</div>
-                        <div class="day">3 شنبه</div>
-                        <div class="day">4 شنبه</div>
-                        <div class="day">5 شنبه</div>
-                        <div class="day">جمعه</div>
-                    </div>
-                </header>
-                <div class="datepicker-calendar" id="datepicker-calendar">
-                </div>
+  <body>
+    <div class="centered-content">
+      <!-- Date Picker -->
+      <div class="date-picker" id="datePicker">
+        <input
+          type="text"
+          id="datePickerInput"
+          class="date-picker-input"
+          readonly
+          placeholder="تاریخ را انتخاب کنید"
+        />
+        <div class="date-picker__popup" id="datePickerPopup">
+          <div class="date-picker__popup__body scale-up-center">
+            <header class="date-picker__heaer">
+              <div class="date-picker__actions date-picker__actions--year">
+                <button id="prevYear" class="btn-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    width="10"
+                    height="10"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </button>
+                <span id="currentYear" class="date-picker__year-name"></span>
+                <button id="nextYear" class="btn-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    width="10"
+                    height="10"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="date-picker__actions date-picker__actions--month">
+                <button id="prevMonth" class="btn-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    width="10"
+                    height="10"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </button>
+                <span id="currentMonth" class="date-picker__month-name"></span>
+                <button id="nextMonth" class="btn-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    width="10"
+                    height="10"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="date-picker__days">
+                <div class="date-picker__days-item">شنبه</div>
+                <div class="date-picker__days-item">1شنبه</div>
+                <div class="date-picker__days-item">2شنبه</div>
+                <div class="date-picker__days-item">3شنبه</div>
+                <div class="date-picker__days-item">4شنبه</div>
+                <div class="date-picker__days-item">5شنبه</div>
+                <div class="date-picker__days-item">جمعه</div>
+              </div>
+            </header>
 
-                <div class="footer-action">
-                    <button class="actionNow">امروز</button>
-                    <button class="actionClear">خالی</button>
-                </div>
+            <div class="date-picker_calendar" id="datePickerCalendar"></div>
+
+            <div class="date-picker__footer">
+              <button id="actionNow" class="btn">امروز</button>
+              <button id="actionClear" class="btn">خالی</button>
             </div>
+          </div>
         </div>
+      </div>
+      <!-- Date Picker -->
     </div>
 
-
+    <!-- Load Script -->
     <script src="https://unpkg.com/jalali-moment@3.3.11/dist/jalali-moment.browser.js"></script>
     <script src="./assets/js/app.js"></script>
-</body>
-
+  </body>
 </html>

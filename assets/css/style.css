@@ -1,21 +1,19 @@
-/******************** Add fonts ********************/
+/* Add fonts */
 @font-face {
-    font-family: IRANSansX;
-    font-style: normal;
-    font-weight: 600;
-    src: url('../fonts/IRANSansX-DemiBold.woff2') format('woff2');
+  font-family: IRANSansX;
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/IRANSansXFaNum-DemiBold.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: IRANSansX;
-    font-style: normal;
-    font-weight: normal;
-    src: url('../fonts/IRANSansX-Regular.woff2') format('woff2');
+  font-family: IRANSansX;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/IRANSansXFaNum-Regular.woff2") format("woff2");
 }
 
-/******************** Add fonts ********************/
-
-/******************** Css Reset ********************/
+/* Css Reset */
 html,
 body,
 div,
@@ -97,15 +95,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
-/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -117,240 +113,263 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
+  line-height: 1;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-/******************** Css Reset ********************/
-
-
-/******************** Global ********************/
+/* Global */
 :root {
-    --color-primary: #01497a;
-    --color-primary-foreground: #fff;
+  --color-primary: #01497a;
+  --color-primary-foreground: #fff;
 }
 
 * {
-    font-family: IRANSansX !important;
+  font-family: IRANSansX !important;
 }
 
 body {
-    padding: 10px
+  padding: 10px;
 }
 
-.centerd-content {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.centered-content {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/******************** Global ********************/
-.datepicker-container {
-    position: relative;
+.date-picker {
+  position: relative;
 }
 
-.datepicker-input {
-    outline: none;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 7px 10px;
+.date-picker-input {
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 7px 10px;
 }
 
-.datepicker-arrow {
-    visibility: visible;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    height: 11px;
-    width: 20px;
-    transform: translate(104.2px, 1909.6px);
-    z-index: 101;
+.date-picker-arrow {
+  visibility: visible;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  height: 11px;
+  width: 20px;
+  transform: translate(104.2px, 1909.6px);
+  z-index: 101;
 }
 
-.datepicker-popup {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    right: 0;
-    top: 40px;
-    z-index: 1000;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.date-picker__popup {
+  display: none;
+  right: 50%;
+  transform: translateX(50%);
+  position: absolute;
+  top: 40px;
+  z-index: 1000;
+}
+.date-picker__popup__body {
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .show-calender {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    align-items: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
 }
-
 .show-calender_day-name {
-    justify-self: center;
+  justify-self: center;
 }
 
-.datepicker-calendar {
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    padding: 20px 10px;
-    gap: 5px;
+.date-picker_calendar {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  padding: 20px 10px;
+  gap: 5px;
 }
 
 .show-calendar-week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    align-items: center;
-    gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  gap: 5px;
 }
 
 .calendar-day {
-    background-color: transparent;
-    text-align: center;
-    line-height: 30px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    width: 30px;
-    height: 30px;
-    transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  text-align: center;
+  line-height: 30px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease-in-out;
 }
 
 .calendar-day:hover {
-    border-color: var(--color-primary);
-    transition: all 0.2s ease-in-out;
+  border-color: var(--color-primary);
+  transition: all 0.2s ease-in-out;
 }
 
 .calendar-day--today {
-    border-color: #ccc;
+  border-color: #ccc;
 }
 
 .calendar-day--selected {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary);
-    color: var(--color-primary-foreground);
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
 }
 
 /* Header */
-.datepicker-action-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "years months" "days days";
-    gap: 8px;
-    color: var(--color-primary-foreground);
-    background-color: var(--color-primary);
-    padding: 10px 10px 2px;
+.date-picker__heaer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "month year" "days days";
+  gap: 8px;
+  color: var(--color-primary-foreground);
+  background-color: var(--color-primary);
+  padding: 10px 10px 2px;
 }
 
-.datepicker-action-header_years,
-.datepicker-action-header_months {
-    grid-row: 1fr;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.date-picker__actions {
+  grid-row: 1fr;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.datepicker-action-header_years {
-    grid-area: years;
+.date-picker__actions--year {
+  grid-area: year;
 }
 
-.datepicker-action-header_months {
-    grid-area: months;
+.date-picker__actions--month {
+  grid-area: month;
 }
 
-.datepicker-action-header_days {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    grid-area: days;
+.date-picker__days {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: days;
 }
 
-.datepicker-action-header_days .day {
-    font-size: 12px;
+.date-picker__days-item {
+  font-size: 12px;
 }
 
-.datepicker-action-header_months .currentMonth {
-    width: 80px;
+.date-picker__month-name {
+  text-align: center;
+  width: 80px;
 }
 
-.datepicker-action-header_years :is(.nextYear, .prevYear),
-.datepicker-action-header_months :is(.nextMonth, .prevMonth) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: 1px solid var(--color-primary-foreground);
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
-    color: inherit;
-    transition: all 0.3s ease-in-out;
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid var(--color-primary-foreground);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
 }
 
-.datepicker-action-header_years :is(.nextYear, .prevYear):hover,
-.datepicker-action-header_months :is(.nextMonth, .prevMonth):hover {
-    background-color: var(--color-primary-foreground);
-    color: var(--color-primary);
-    transition: all 0.3s ease-in-out;
+.btn-icon:hover {
+  background-color: var(--color-primary-foreground);
+  color: var(--color-primary);
+  transition: all 0.3s ease-in-out;
 }
 
 /* Footer */
-.footer-action {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 10px 10px;
+.date-picker__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px 10px;
 }
 
-.footer-action :is(.actionNow, .actionClear) {
-    appearance: none;
-    color: var(--color-primary-foreground);
-    background-color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    border-radius: 5px;
-    padding: 2px 8px;
-    transition: all 0.3s ease-in-out;
+.btn {
+  appearance: none;
+  color: var(--color-primary-foreground);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  padding: 2px 8px;
+  transition: all 0.3s ease-in-out;
 }
 
-.footer-action :is(.actionNow, .actionClear):hover {
-    appearance: none;
-    color: var(--color-primary);
-    background-color: var(--color-primary-foreground);
-    border-radius: 5px;
-    padding: 2px 8px;
-    transition: all 0.3s ease-in-out;
+.btn:hover {
+  appearance: none;
+  color: var(--color-primary);
+  background-color: var(--color-primary-foreground);
+  border-radius: 5px;
+  padding: 2px 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animations */
+.scale-up-center {
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }

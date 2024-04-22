@@ -28,7 +28,6 @@ class DatePicker {
      */
     fullNumberFormatJalali = 'jYYYY/jMM/jDD';
 
-
     /**
      * Constructor function of the mentioned class
      */
@@ -36,7 +35,7 @@ class DatePicker {
         this.document.addEventListener("DOMContentLoaded", () => {
             this.initializeMoment()
             this.openCalendarEvent();
-            this.closeCaledarEvent();
+            this.closeCalendarEvent();
             this.updateCurrentMonthYear();
             this.setNowDay();
             this.clearDay();
@@ -50,17 +49,17 @@ class DatePicker {
     }
 
     /**
-     * Get Input alue
+     * Get Input value
      */
     getInputValue() {
-        return this.query("#datepicker-input").value;
+        return this.query("#datePickerInput").value;
     }
 
     /**
-     * Set Input alue
+     * Set Input value
      */
     setInputValue(value) {
-        return this.query("#datepicker-input").value = value;
+        return this.query("#datePickerInput").value = value;
     }
 
     /**
@@ -75,12 +74,14 @@ class DatePicker {
      * A method to initialize the moment library
      */
     initializeMoment() {
-        this.selectedDate = moment(); // Now Date
+        this.selectedDate = moment(); // Default Select Date
         this.nowDate = moment(); // Now Date
         moment.locale('fa'); // Set Local
     }
 
     /**
+     * Two dates are compared by typing the moment.
+     * I can't use the built-in functions of moment.js.
      * 
      * @param {Moment} firstDate 
      * @param {Moment} secondDate 
@@ -92,39 +93,39 @@ class DatePicker {
     }
 
     /**
-     * Open Calendar Event
+     * The event for to the opening of the calendar
      */
     openCalendarEvent() {
-        this.query('#datepicker-input').addEventListener('click', () => {
-            const popupElement = this.query('#datepicker-popup');
+        this.query('#datePickerInput').addEventListener('click', () => {
+            const popupElement = this.query('#datePickerPopup');
             popupElement.style = `display:flex;`;
         });
     }
 
     /**
-     * Close Calendar Event
+     * The event for to the closing of the calendar
      */
-    closeCaledarEvent() {
+    closeCalendarEvent() {
         this.document.addEventListener('click', (event) => {
-            if (!this.query('.datepicker-container').contains(event.target)) {
-                this.query('#datepicker-popup').style.display = 'none';
+            if (!this.query('#datePicker').contains(event.target)) {
+                this.query('#datePickerPopup').style.display = 'none';
             }
         });
     }
 
     /**
-     * Set Month and Year
+     * Display the current year and month
      */
     updateCurrentMonthYear(date = this.nowDate) {
-        this.query('.currentYear').innerText = date.format('jYYYY');
-        this.query('.currentMonth').innerText = this.jalaliMonth[date.format('jM') - 1];
+        this.query('#currentYear').innerText = date.format('jYYYY');
+        this.query('#currentMonth').innerText = this.jalaliMonth[date.format('jM') - 1];
     }
 
     /**
-     * Set Now Day
+     * Event to select today's date
      */
     setNowDay() {
-        this.query('.actionNow').addEventListener('click', () => {
+        this.query('#actionNow').addEventListener('click', () => {
             this.setInputValue(this.nowDate.format(this.fullNumberFormatJalali))
             this.renderCalendar({
                 date: this.nowDate,
@@ -135,11 +136,11 @@ class DatePicker {
     }
 
     /**
-     * Clear Input
+     * Event to clear the selected date
      */
     clearDay() {
-        this.query('.actionClear').addEventListener('click', () => {
-            this.query('#datepicker-input').value = "";
+        this.query('#actionClear').addEventListener('click', () => {
+            this.query('#datePickerInput').value = "";
             this.setInputValue("")
             this.renderCalendar({
                 date: this.nowDate,
@@ -150,7 +151,7 @@ class DatePicker {
     }
 
     /**
-     * Change Month
+     * Change calendar months
      */
     changeMonth() {
         const change = (type = "increment") => {
@@ -161,17 +162,17 @@ class DatePicker {
             });
             this.updateCurrentMonthYear(this.selectedDate)
         }
-        this.query('.nextMonth').addEventListener('click', () => {
+        this.query('#nextMonth').addEventListener('click', () => {
             change("increment")
         });
-        this.query('.prevMonth').addEventListener('click', () => {
+        this.query('#prevMonth').addEventListener('click', () => {
             change("decrement")
         });
     }
 
 
     /**
-     * Change Month
+     * Change calendar Year
      */
     changeYear() {
         const change = (type = "increment") => {
@@ -182,24 +183,23 @@ class DatePicker {
             });
             this.updateCurrentMonthYear(this.selectedDate)
         }
-        this.query('.nextYear').addEventListener('click', () => {
+        this.query('#nextYear').addEventListener('click', () => {
             change("increment")
         });
-        this.query('.prevYear').addEventListener('click', () => {
+        this.query('#prevYear').addEventListener('click', () => {
             change("decrement")
         });
     }
 
     /**
-     * Add action to days
+     * Event to select days
      */
-
     daysAction(date) {
-        this.query('.calendar-day')?.forEach(day => {
+        this.query('.calendarDay')?.forEach(day => {
             day.addEventListener('click', () => {
                 const selectedDay = parseInt(day.innerText);
                 const selectedDate = moment(date).jDate(selectedDay).format(this.fullNumberFormatJalali);
-                this.query('#datepicker-input').value = selectedDate;
+                this.query('#datePickerInput').value = selectedDate;
                 const newSelectedDate = moment(selectedDate, this.fullNumberFormatJalali);
                 this.renderCalendar({
                     date: newSelectedDate,
@@ -228,7 +228,7 @@ class DatePicker {
 
             for (let i = 0; i < 7; i++) {
                 if (currentDate.isSame(startDate, 'month')) {
-                    calendarHtml += `<button class="calendar-day${this.compareDate(currentDate, this.nowDate) ? " calendar-day--today" : ""}${!!selectedDay && this.compareDate(currentDate, selectedDay) ? " calendar-day--selected" : ""}">${currentDate.date()}</button>`;
+                    calendarHtml += `<button class="calendarDay calendar-day${this.compareDate(currentDate, this.nowDate) ? " calendar-day--today" : ""}${!!selectedDay && this.compareDate(currentDate, selectedDay) ? " calendar-day--selected" : ""}">${currentDate.date()}</button>`;
                 } else {
                     calendarHtml += '<div></div>';
                 }
@@ -238,7 +238,7 @@ class DatePicker {
             calendarHtml += '</div>';
         }
 
-        this.query('#datepicker-calendar').innerHTML = calendarHtml;
+        this.query('#datePickerCalendar').innerHTML = calendarHtml;
 
         /**
          * Add Action
