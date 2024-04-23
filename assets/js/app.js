@@ -235,4 +235,4 @@ class DatePicker {
     }
 }
 
-const createInstanseClass = new DatePicker();
+const createInstanceClass = new DatePicker();
